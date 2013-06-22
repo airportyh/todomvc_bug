@@ -12,7 +12,7 @@ extend(App.prototype, {
   start: function(){
     DOM.setContents(document.body, DOM.div(
       this.field = DOM.input.text({placeholder: 'What to do?'}),
-      this.ul = document.createElement('ul')
+      this.ul = DOM.ul()
     ))
     this.attach()
   },
