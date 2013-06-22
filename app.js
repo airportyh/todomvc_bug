@@ -10,14 +10,10 @@ function App(){
 extend(App.prototype, bug)
 extend(App.prototype, {
   start: function(){
-    var field = this.field = document.createElement('input')
-    field.type = 'text'
-    field.placeholder = 'What to do?'
-    document.body.appendChild(field)
-
-    var ul = this.ul = document.createElement('ul')
-    document.body.appendChild(ul)
-
+    DOM.setContents(document.body, DOM.div(
+      this.field = DOM.input.text({placeholder: 'What to do?'}),
+      this.ul = document.createElement('ul')
+    ))
     this.attach()
   },
   "field:onkeypress": function(e){
@@ -29,8 +25,8 @@ extend(App.prototype, {
   newTask: function(name){
     var task = new Task(name)
     this.tasks.push(task)
-    this.taskController = new TaskController(task)
-    this.ul.appendChild(this.taskController.elm)
+    var taskController = new TaskController(task)
+    DOM.append(this.ul, taskController.elm)
   }
 })
 
