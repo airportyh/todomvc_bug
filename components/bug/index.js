@@ -40,7 +40,9 @@
 
   function listen(elm, evt, handler){
     if (!elm) return
-    if (handler._bound) return
+    if (handler._bound){
+      unlisten(elm, evt, handler)
+    }
     handler._bound = bind(handler, this)
     if (elm.addEventListener){
       elm.addEventListener(evt, handler._bound)
