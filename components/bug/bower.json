@@ -1,0 +1,19 @@
+{
+  "name": "bug",
+  "version": "0.0.4",
+  "main": "index.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "gitHead": "85c3f2a842fd778d4b1b09c24571d65622608db2",
+  "readme": "Bug\n===========\n\nA Javascript mixin that conviniently handles binding to a DOM element for a widget class that you might write.\n\nWhen you mixin `Bug` to your own Javascript object, like so\n\n    extend(MyWidget.prototype, Bug)\n\nYou get two extra methods: \n\n  * `attach()` - which attachs all event handlers specified (see below) and \n  * `detach()` - which detaches all of them.\n\nThe event handlers in your object are specified by naming the property in the format `<property>:on<event>`. For example, the following event handler will attach to the `click` event of the element stored in the `elm` property of the object.\n\n    \"elm:onclick\": function(e){\n    }\n\nInstall with Bower\n------------------\n\n    bower install bug\n\nInstall with NPM\n----------------\n\n    npm install bug\n\nFull Example\n------------\n  \n    function Widget(elm){\n      this.elm = elm\n      this.attach() // attach all event handlers in the\n                    // specified format\n    }\n  \n    extend(Widget.prototype, Bug)\n  \n    extend(Widget.prototype, {\n      // the following event handler will handle all\n      // \"click\" events to the DOM element in the \"elm\"\n      // property\n      \"elm:onclick\": function(e){\n        console.log('elm was clicked!')\n      },\n      destroy: function(){\n        this.detach() // detaches all event handlers in the\n                      // specified format\n      }\n    })\n  \n    // a simple extend which behaves like underscore's extend\n    function extend(dst, src){\n      for (var prop in src)\n        dst[prop] = src[prop]\n    }\n\nOn Event Emitters\n-----------------\n\nBug also can listen to event emitters. This is an example in node\n\n    var Bug = require('bug')\n    var EventEmitter = require('events').EventEmitter\n\n    var bar = new EventEmitter\n    var foo = {\n      \"bar:onmessage\": function(msg){\n        console.log(\"Got message\", msg)\n      },\n      bar: bar\n    }\n    extend(obj, Bug)\n    obj.attach()\n    bar.emit('message', 'Hello!')\n\nBrowser Support\n---------------\n\nTested on IE 7.0+ and Chrome, should work on all modern browsers.",
+  "readmeFilename": "README.md",
+  "_id": "bug@0.0.0",
+  "description": "Bug ===========",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/airportyh/bug.git"
+  }
+}

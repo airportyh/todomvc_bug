@@ -1,0 +1,27 @@
+{
+  "name": "bug",
+  "version": "0.0.4",
+  "description": "A mixin that allows object to easily listen in on child objects.",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "tape": "~1.0.2"
+  },
+  "scripts": {
+    "test": "testem ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/airportyh/bug.git"
+  },
+  "keywords": [
+    "events"
+  ],
+  "author": "Toby Ho",
+  "license": "MIT",
+  "gitHead": "411d17dd9f41f5751d899416ef31bfbffe94b8aa",
+  "readmeFilename": "README.md"
+}
