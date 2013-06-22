@@ -1,4 +1,4 @@
-requirejs.config({
+require.config({
   paths: {
     bug: 'components/bug/index'
   }
